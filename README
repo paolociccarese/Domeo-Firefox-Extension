@@ -1,8 +1,12 @@
    
 Domeo Firefox Extension
 -----------------------
-This is a simple Firefox Extension that triggers the Domeo - http://code.google.com/p/domeo/ -  editor with the current document.
+This is a simple Firefox Extension that triggers the Domeo [1]  editor with the
+current document.
 
 Credits
 -------
-The Domeo Firefox Extension is developed by Paolo Ciccarese http://www.paolociccarese.info
+The Domeo Firefox Extension is developed by Paolo Ciccarese [2]
+
+[1] http://code.google.com/p/domeo/
+[2] http://www.paolociccarese.info/
