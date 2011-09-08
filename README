@@ -1,7 +1,7 @@
    
    Domeo Firefox Extension
    -----------------------
-   This is a simple Firefox Extension that, for now, simply trigger the Domeo editor with the current document.
+   This is a simple Firefox Extension that simply trigger the Domeo editor with the current document.
 
    Credits
    -------
