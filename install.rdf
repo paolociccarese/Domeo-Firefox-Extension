@@ -6,6 +6,7 @@
     <em:name>Domeo Extension</em:name>
     <em:version>0.2</em:version>
     <em:creator>Paolo Ciccarese</em:creator>
+    <em:homepageURL>https://github.com/paolociccarese/Domeo-Firefox-Extension</em:homepageURL>
     <em:description>Simple extension for opening the current document in the Domeo annotator.</em:description>
     <em:optionsURL>chrome://domeoext/content/preferencesWindow.xul</em:optionsURL>
     <em:iconURL>chrome://domeoext/skin/domeoext-icon.png</em:iconURL>
