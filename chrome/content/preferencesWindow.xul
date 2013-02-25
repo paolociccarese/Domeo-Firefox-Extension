@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE window SYSTEM "chrome://domeoext/locale/preferencesWindow.dtd">
+
+<!-- Created by Paolo Ciccarese -->
+
+<prefwindow id="modifyheadersPreferences"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    style="width: 42em; min-height: 37.5em;">
+
+    <prefpane id="paneProfiles" label="&panel_title_settings;" style="opacity: 1.0; background-color: menu !important;">
+   		<preferences>
+			<preference id="pref_location" name="extensions.domeoext.defaultLocation" type="string"/>
+			<preference id="pref_version" name="extensions.domeoext.version" type="int"/>
+			
+  		</preferences>
+  		<vbox id="modifyheaders-profiles">
+        	<description>&settings_app_url;</description>
+            <textbox id="location" preference="pref_location"/>
+            <radiogroup preference="pref_version">
+            	<hbox>
+					<radio id="version1" label="Version 1" value="1"/>
+					<radio id="version2" label="Version 2" value="2" selected="true"/>
+				</hbox> 
+			</radiogroup>
+        </vbox>
+    </prefpane>
+    <prefpane id="paneHeaders" label="&panel_title_about;" style="opacity: 1.0; background-color: menu !important;">
+        	<vbox id="modifyheaders-profiles">
+        		<html:p>
+        			&about_prefix_1; 
+        			<html:a href="http://annotationframework.org" target="_blank" style="text-decoration: underline;">Domeo</html:a>
+        			&about_suffix_1;
+        			<html:a href="http://www.paolociccarese.info" target="_blank" style="text-decoration: underline;">Paolo Ciccarese, PhD</html:a>
+    			</html:p>
+        	</vbox>
+    </prefpane>
+</prefwindow>
+

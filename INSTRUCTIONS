@@ -1,0 +1,7 @@
+compile.sh
+----------
+The script for compiling the Firefox Extension into an xpi file named domeoext.xpi
+
+domeoext.xpi
+------------
+The Firefox Extension Installer Module. To be installed in Firefox through 'File'>'Open File'

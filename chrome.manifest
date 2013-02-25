@@ -1,0 +1,4 @@
+content	domeoext	jar:chrome/domeoext.jar!/content/
+locale	domeoext	en-US	jar:chrome/domeoext.jar!/locale/en-US/
+skin	domeoext	classic/1.0	jar:chrome/domeoext.jar!/skin/
+overlay	chrome://browser/content/browser.xul	chrome://domeoext/content/overlay.xul

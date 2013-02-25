@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://domeoext/locale/sidebar.dtd">
+
+<overlay id="domeoExtOverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<!-- Created by Paolo Ciccarese -->
+
+  <menupopup id="viewSidebarMenu">
+    <menuitem key="key_openEmptySidebar" observes="viewEmptySidebar"  />
+  </menupopup>
+  
+  <keyset id="mainKeyset">
+    <key id="key_openEmptySidebar" command="viewEmptySidebar"
+         key="&openEmptySidebar.commandkey;" 
+         modifiers="&openEmptySidebar.modifierskey;" />
+  </keyset>
+  
+  <broadcasterset id="mainBroadcasterSet"> 
+    <broadcaster id="viewEmptySidebar" 
+                 label="&emptysidebar.title;"
+                 autoCheck="false"
+                 type="checkbox"
+                 group="sidebar"
+                 sidebarurl="chrome://domeoext/content/sidebar.xul"
+                 sidebartitle="&emptysidebar.title;"
+                 oncommand="toggleSidebar('viewEmptySidebar');" />
+  </broadcasterset>
+  
+    <vbox id="appcontent">
+    	<splitter id="domeoContentSplitter" collapsed="true"/>
+    	<vbox id="domeoContentBox" collapsed="true" persist="height">
+        	<toolbox id="domeoToolbox">
+            	<toolbar id="domeoToolbar">
+            		<toolbarbutton id="domeoFirebugMenu" type="menu">
+            			<menupopup onpopupshowing="">
+                        	<menuitem label="Disable" type="checkbox"
+                                  oncommand="alert('disable')" option="disabledAlways"/>
+                          	<menuseparator/>
+                          	<menuitem label="Login" type="checkbox"
+                                  oncommand="alert('login')" option="disabledAlways"/>
+                                  
+                        	<menuseparator/>
+                        	
+                        	<menu label="TextSize">
+                            <menupopup>
+                                <menuitem label="IncreaseTextSize"
+                                	oncommand="alert('')"/>
+                                <menuitem label="DecreaseTextSize"
+                                	oncommand="alert('')"/>
+                                <menuitem label="NormalTextSize" 
+                                	oncommand="alert('')"/>
+                            </menupopup>
+                        	</menu>
+
+							<menuseparator/>
+
+                        	<menuitem label="Website" oncommand="alert('main')"/>
+                        </menupopup>
+            		</toolbarbutton>
+            		
+            		<toolbarbutton id="domeoDetachButton" 
+                               label="Detach" command="viewEmptySidebar"/>
+                	<toolbarbutton id="domeoCloseButton" 
+                               label="Close"/>
+            	</toolbar>
+        	</toolbox>
+        
+        	<hbox id="domeoPanelBox" flex="1"/>
+        	<hbox id="domeoCommandBox"/>
+        </vbox>
+    </vbox>
+
+	<statusbar id="status-bar" >
+		<statusbarpanel  id="domeoext-status-bar-panel"
+			style="width:18px; padding: 0; cursor:pointer;"
+		    class="statusbarpanel-iconic-text"
+			onclick="de_domeoButtonPressed()"
+			label="Domeo"
+			tooltiptext="Open in Domeo"
+			image="chrome://domeoext/skin/domeo-ext-statusbar-edit.png"/>
+    </statusbar>
+
+	<script type="text/javascript">
+<![CDATA[
+function de_domeoButtonPressed() {
+    var mainWindow = window.QueryInterface(Components.interfaces.nsIInterfaceRequestor)
+                   .getInterface(Components.interfaces.nsIWebNavigation)
+                   .QueryInterface(Components.interfaces.nsIDocShellTreeItem)
+                   .rootTreeItem
+                   .QueryInterface(Components.interfaces.nsIInterfaceRequestor)
+                   .getInterface(Components.interfaces.nsIDOMWindow);
+
+	var prefManager = Components.classes["@mozilla.org/preferences-service;1"]
+         					.getService(Components.interfaces.nsIPrefBranch);
+	de_openDomeo(mainWindow, mainWindow.content.location.href);
+	
+	/*
+	if(!prefManager.getBoolPref("extensions.domeoext.development")) 
+   	 	
+   	else
+   		de_openAppication();
+   	*/
+
+   		
+   	/* Make sure it does not try to open Domeo recursively */	
+   		
+   	/*
+    var progressbarpanel = document.getElementById("domeoext-status-bar-panel"); 
+    progressbarpanel.image = "chrome://domeoext/skin/checkbox_checked.png";
+	progressbarpanel.tooltiptext="Domeo found existing annotation for this document"
+	*/
+}
+	
+	function de_openAppication() {
+		document.getElementById("domeoContentSplitter").collapsed = false;
+		document.getElementById("domeoContentBox").collapsed = false;
+	}
+
+ 	function de_openDomeo(window, url) {
+   		var prefManager = Components.classes["@mozilla.org/preferences-service;1"]
+         					.getService(Components.interfaces.nsIPrefBranch);
+         					
+        try {    
+    		if(prefManager.getIntPref("extensions.domeoext.version")==2) {
+    			window.content.location.href = prefManager.getCharPref("extensions.domeoext.defaultLocation") + '/web/domeo?url=' + url;
+    		} else if(prefManager.getIntPref("extensions.domeoext.version")==1) {
+    			window.content.location.href = prefManager.getCharPref("extensions.domeoext.defaultLocation") + '/web/annotator?url=' + url;
+    		}    				
+    	} catch (e) {
+   			alert(e);
+   		} 					
+ 	}
+]]>
+	</script>
+</overlay>

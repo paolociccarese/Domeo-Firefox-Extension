@@ -1,0 +1,7 @@
+<!ENTITY panel_title_settings "Settings">
+<!ENTITY settings_app_url "The URL of Your Domeo application instance">
+<!ENTITY settings_app_v1 "Version 1">
+<!ENTITY settings_app_v2 "Version 2">
+<!ENTITY panel_title_about "About">
+<!ENTITY about_prefix_1 "The">
+<!ENTITY about_suffix_1 " extension for Firefox has been created by ">
